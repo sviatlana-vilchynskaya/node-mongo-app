@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
 const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs'
@@ -16,8 +17,10 @@ app.set('views', 'views')
 
 async function start() {
     try {
-        await mongoose.connect('', {
-            useNewUrlParser: true,
+        await mongoose.connect(
+            'mongodb+srv://sviatlana:kohechka@cluster0.6gvqt.mongodb.net/todos', 
+        {
+            useUnifiedTopology: true,
             useFindAndModify: false
         })
         app.listen(PORT, () => {
